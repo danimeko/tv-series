@@ -3,7 +3,7 @@ import { Image } from 'semantic-ui-react'
 import Loading from '../../components/Loader';
 import './index.css'
 
-const API = 'http://api.tvmaze.com/shows'; 
+const API = 'https://api.tvmaze.com/shows'; 
 
 class Shows extends Component {
     constructor(props){

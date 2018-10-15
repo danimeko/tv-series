@@ -8,7 +8,7 @@ class SingleSeries extends Component {
 
     componentDidMount (){
         const {id} = this.props.match.params;
-        const  url = `http://api.tvmaze.com/shows/${id}?embed=episodes`;
+        const  url = `https://api.tvmaze.com/shows/${id}?embed=episodes`;
         fetch(url)
           .then((response)=>response.json())
           .then(json => { this.setState({ show: json })});

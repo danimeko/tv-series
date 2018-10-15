@@ -16,7 +16,7 @@ class Series extends Component{
     
     onSeriesInputChange = e => {
         this.setState({seriesName : e.target.value , isFetching : true});
-        let url = `http://api.tvmaze.com/search/shows?q=${e.target.value}`;
+        let url = `https://api.tvmaze.com/search/shows?q=${e.target.value}`;
         fetch(url)
           .then((response)=>response.json())
           .then(json => { this.setState({ series: json , isFetching : false })});
