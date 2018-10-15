@@ -1,5 +1,6 @@
 import  React , {Component} from 'react'
 import Loading from '../../components/Loader'
+import {join , split} from 'lodash'
 
 class SingleSeries extends Component {
     state ={
@@ -12,6 +13,15 @@ class SingleSeries extends Component {
         fetch(url)
           .then((response)=>response.json())
           .then(json => { this.setState({ show: json })});
+    }
+
+    showImage( show ){
+        console.log(show.image.medium);
+        const cha = split(show.image.medium , ':');
+        cha[0]="https";
+        const url = join(cha, ":")
+        return url ;
+        
     }
    
 
@@ -33,7 +43,7 @@ class SingleSeries extends Component {
                         <p>Rating - {show.rating.average}</p>
                         <p>Episodes - {show._embedded.episodes.length}</p>
                         <p>
-                            <img alt="Show" src={show.image.medium} />
+                            <img alt="Show" src={this.showImage(show)} />
                         </p>
                     </div>
                 }
