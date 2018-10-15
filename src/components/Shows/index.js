@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Image } from 'semantic-ui-react'
 import Loading from '../../components/Loader';
 import './index.css'
+import {join , split} from 'lodash'
 
 const API = 'https://api.tvmaze.com/shows'; 
 
@@ -26,14 +27,23 @@ class Shows extends Component {
         }))
     }
 
+    showImage( show ){
+        console.log(show.image.medium);
+        const cha = split(show.image.medium , ':');
+        cha[0]="https";
+        const url = join(cha, ":")
+        return url ;
+        
+    }
+
     render(){
         const {shows ,isLoading} = this.state 
         return(
            
-              <div class="container">
+              <div className="container">
                {isLoading ? <Loading/> : shows.map(show => 
-                    <div class="item" key={show.id } >
-                        <Image class='ui small' rounded src={show.image.medium} />
+                    <div className="item" key={show.id } >
+                        <Image className='ui small' rounded src={this.showImage(show)} />
                     </div>)}
               </div>
           
