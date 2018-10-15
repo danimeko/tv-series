@@ -13,7 +13,7 @@ class App extends Component {
           <h1 className="App-title">Tv Series Database</h1>
         </header>
         <Main />
-        <Shows />
+        
       </div>
     );
   }
