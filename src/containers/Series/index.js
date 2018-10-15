@@ -43,7 +43,7 @@ class Series extends Component{
                 <p>No series have been found with this name </p>
             }
             {
-                isFetching && <Loading/>
+               // isFetching && <Loading/>
             }
             {
                 !isFetching && <SeriesList list = {this.state.series} />
