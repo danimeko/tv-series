@@ -5,6 +5,14 @@ import './index.css'
 import {join , split} from 'lodash'
 
 const API = 'https://api.tvmaze.com/shows'; 
+const showImage =  show => {
+    console.log(show.image.medium);
+    const cha = split(show.image.medium , ':');
+    cha[0]="https";
+    const url = join(cha, ":")
+    return url ;
+    
+}
 
 class Shows extends Component {
     constructor(props){
@@ -27,14 +35,7 @@ class Shows extends Component {
         }))
     }
 
-    showImage( show ){
-        console.log(show.image.medium);
-        const cha = split(show.image.medium , ':');
-        cha[0]="https";
-        const url = join(cha, ":")
-        return url ;
-        
-    }
+    
 
     render(){
         const {shows ,isLoading} = this.state 
@@ -43,7 +44,7 @@ class Shows extends Component {
               <div className="container">
                {isLoading ? <Loading/> : shows.map(show => 
                     <div className="item" key={show.id } >
-                        <Image className='ui small' rounded src={this.showImage(show)} />
+                        <Image className='ui small' rounded src={showImage(show)} />
                     </div>)}
               </div>
           
